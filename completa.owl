@@ -1,0 +1,771 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/evelio/ontologies/2018/5/Alarms"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/evelio/ontologies/2018/5/Alarms">
+    <Prefix name="" IRI="http://www.semanticweb.org/evelio/ontologies/2018/5/Alarms"/>
+    <Prefix name="sf" IRI="http://www.opengis.net/ont/sf#"/>
+    <Prefix name="geo" IRI="http://www.w3.org/2003/11/geo#"/>
+    <Prefix name="gml" IRI="http://www.opengis.net/ont/gml#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="ssn" IRI="http://www.w3.org/ns/ssn/"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="core" IRI="http://www.w3.org/2004/02/skos/core#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="sosa" IRI="http://www.w3.org/ns/sosa/"/>
+    <Prefix name="alarms" IRI="http://www.semanticweb.org/evelio/ontologies/2018/5/Alarms#"/>
+    <Prefix name="systems" IRI="http://www.w3.org/ns/ssn/systems/"/>
+    <Prefix name="geosparql" IRI="http://www.opengis.net/ont/geosparql#"/>
+    <Import>http://www.opengis.net/ont/geosparql</Import>
+    <Import>http://www.w3.org/ns/ssn/systems/</Import>
+    <Declaration>
+        <NamedIndividual IRI="#NoAlarm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Result1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Level_3_Alarm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Level_4_Alarm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Level_2_Alarm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPriority"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Alarm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasActualInfluence"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#CombinedAlarm"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasLocation"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Range2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NotCombinedAlarm"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasNumericValue"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isAlarmRangeOf"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isLocationOf"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasUpperLimit"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InSituSensor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Location1"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#triggersAlarm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#InfluenceRadius1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#DistanceSensor"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#WaterLevelInZaragoza"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#InfluenceRadius"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLowerLimit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Range1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Observation1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AlarmRange"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#CombinedAlarm1"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#Alarm"/>
+        <ObjectUnionOf>
+            <Class IRI="#CombinedAlarm"/>
+            <Class IRI="#NotCombinedAlarm"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class abbreviatedIRI="sosa:Sensor"/>
+        <ObjectUnionOf>
+            <Class IRI="#DistanceSensor"/>
+            <Class IRI="#InSituSensor"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#AlarmRange"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#triggersAlarm"/>
+            <Class IRI="#Alarm"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlarmRange"/>
+        <ObjectExactCardinality cardinality="1">
+            <ObjectProperty IRI="#triggersAlarm"/>
+            <Class IRI="#Alarm"/>
+        </ObjectExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlarmRange"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasLowerLimit"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AlarmRange"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="#hasUpperLimit"/>
+            <Datatype abbreviatedIRI="xsd:double"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#CombinedAlarm"/>
+        <Class IRI="#Alarm"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#DistanceSensor"/>
+        <Class abbreviatedIRI="sosa:Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#InSituSensor"/>
+        <Class abbreviatedIRI="sosa:Sensor"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NotCombinedAlarm"/>
+        <Class IRI="#Alarm"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sosa:Observation"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#triggersAlarm"/>
+            <Class IRI="#Alarm"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sosa:Result"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasLocation"/>
+            <Class abbreviatedIRI="sf:Point"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class abbreviatedIRI="sosa:Sensor"/>
+        <ObjectAllValuesFrom>
+            <ObjectProperty IRI="#hasLocation"/>
+            <Class abbreviatedIRI="sf:Point"/>
+        </ObjectAllValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#CombinedAlarm"/>
+        <Class IRI="#NotCombinedAlarm"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#DistanceSensor"/>
+        <Class IRI="#InSituSensor"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#CombinedAlarm1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#CombinedAlarm"/>
+        <NamedIndividual IRI="#CombinedAlarm1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#InfluenceRadius"/>
+        <NamedIndividual IRI="#InfluenceRadius1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NotCombinedAlarm"/>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#Level_2_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NotCombinedAlarm"/>
+        <NamedIndividual IRI="#Level_2_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#Level_3_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NotCombinedAlarm"/>
+        <NamedIndividual IRI="#Level_3_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#Level_4_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NotCombinedAlarm"/>
+        <NamedIndividual IRI="#Level_4_Alarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sf:Point"/>
+        <NamedIndividual IRI="#Location1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Alarm"/>
+        <NamedIndividual IRI="#NoAlarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#NotCombinedAlarm"/>
+        <NamedIndividual IRI="#NoAlarm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sosa:Observation"/>
+        <NamedIndividual IRI="#Observation1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AlarmRange"/>
+        <NamedIndividual IRI="#Range1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#AlarmRange"/>
+        <NamedIndividual IRI="#Range2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sosa:Result"/>
+        <NamedIndividual IRI="#Result1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class abbreviatedIRI="sosa:ObservableProperty"/>
+        <NamedIndividual IRI="#WaterLevelInZaragoza"/>
+    </ClassAssertion>
+    <DifferentIndividuals>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+        <NamedIndividual IRI="#Level_2_Alarm"/>
+        <NamedIndividual IRI="#Level_3_Alarm"/>
+        <NamedIndividual IRI="#Level_4_Alarm"/>
+        <NamedIndividual IRI="#NoAlarm"/>
+    </DifferentIndividuals>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasLocation"/>
+        <NamedIndividual IRI="#Observation1"/>
+        <NamedIndividual IRI="#Location1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="sosa:hasResult"/>
+        <NamedIndividual IRI="#Observation1"/>
+        <NamedIndividual IRI="#Result1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty abbreviatedIRI="sosa:observedProperty"/>
+        <NamedIndividual IRI="#Observation1"/>
+        <NamedIndividual IRI="#WaterLevelInZaragoza"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#triggersAlarm"/>
+        <NamedIndividual IRI="#Range1"/>
+        <NamedIndividual IRI="#NoAlarm"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#triggersAlarm"/>
+        <NamedIndividual IRI="#Range2"/>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+        <NamedIndividual IRI="#WaterLevelInZaragoza"/>
+        <NamedIndividual IRI="#Range1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+        <NamedIndividual IRI="#WaterLevelInZaragoza"/>
+        <NamedIndividual IRI="#Range2"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasNumericValue"/>
+        <NamedIndividual IRI="#InfluenceRadius1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">3000000.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPriority"/>
+        <NamedIndividual IRI="#Level_1_Alarm"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPriority"/>
+        <NamedIndividual IRI="#Level_2_Alarm"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPriority"/>
+        <NamedIndividual IRI="#Level_3_Alarm"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPriority"/>
+        <NamedIndividual IRI="#Level_4_Alarm"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="geosparql:asWKT"/>
+        <NamedIndividual IRI="#Location1"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">POINT(-0.8810755751947226,41.65856367042024)</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasPriority"/>
+        <NamedIndividual IRI="#NoAlarm"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+        <NamedIndividual IRI="#Observation1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="sosa:resultTime"/>
+        <NamedIndividual IRI="#Observation1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">2018-06-07T11:11:11Z</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasLowerLimit"/>
+        <NamedIndividual IRI="#Range1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">0.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUpperLimit"/>
+        <NamedIndividual IRI="#Range1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasLowerLimit"/>
+        <NamedIndividual IRI="#Range2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1.5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasUpperLimit"/>
+        <NamedIndividual IRI="#Range2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">50.0</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#hasNumericValue"/>
+        <NamedIndividual IRI="#Result1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">5.0</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+        <ObjectProperty IRI="#isAlarmRangeOf"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#hasLocation"/>
+        <ObjectProperty IRI="#isLocationOf"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#triggersAlarm"/>
+        <Class abbreviatedIRI="sosa:Observation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasAlarmRange"/>
+        <Class IRI="#AlarmRange"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasLocation"/>
+        <Class abbreviatedIRI="sf:Point"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#triggersAlarm"/>
+        <Class IRI="#Alarm"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasLowerLimit"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasUpperLimit"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#hasPriority"/>
+    </FunctionalDataProperty>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasActualInfluence"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasNumericValue"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPriority"/>
+        <DataOneOf>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">1</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">2</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">3</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">4</Literal>
+        </DataOneOf>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">S2</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#InSituSensor"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasLocation"/>
+                <Variable IRI="urn:swrl#x"/>
+                <Variable IRI="urn:swrl#y"/>
+            </ObjectPropertyAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Observation"/>
+                <Variable IRI="urn:swrl#z"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="sosa:madeBySensor"/>
+                <Variable IRI="urn:swrl#z"/>
+                <Variable IRI="urn:swrl#x"/>
+            </ObjectPropertyAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasLocation"/>
+                <Variable IRI="urn:swrl#z"/>
+                <Variable IRI="urn:swrl#y"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"> </Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">S3</Literal>
+        </Annotation>
+        <Body>
+            <BuiltInAtom abbreviatedIRI="geo:hasInfluenceNow">
+                <Variable IRI="#bool1"/>
+                <Variable IRI="#t1"/>
+                <Variable IRI="#z1"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#equal">
+                <Variable IRI="#bool1"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </BuiltInAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasNumericValue"/>
+                <NamedIndividual IRI="#InfluenceRadius1"/>
+                <Variable IRI="#radius"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#z1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="sosa:resultTime"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#t1"/>
+            </DataPropertyAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Observation"/>
+                <Variable IRI="#x"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Observation"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+            <DifferentIndividualsAtom>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </DifferentIndividualsAtom>
+            <BuiltInAtom abbreviatedIRI="geo:hasInfluenceNow">
+                <Variable IRI="#bool"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#z"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#equal">
+                <Variable IRI="#bool"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+            </BuiltInAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#z"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="sosa:resultTime"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#t"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasLocation"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#l1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasLocation"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#l2"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="geosparql:asWKT"/>
+                <Variable IRI="#l1"/>
+                <Variable IRI="#wkt1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="geosparql:asWKT"/>
+                <Variable IRI="#l2"/>
+                <Variable IRI="#wkt2"/>
+            </DataPropertyAtom>
+            <BuiltInAtom abbreviatedIRI="geo:haversine">
+                <Variable IRI="#distance"/>
+                <Variable IRI="#wkt1"/>
+                <Variable IRI="#wkt2"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="#distance"/>
+                <Variable IRI="#radius"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="#distance"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            </BuiltInAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#triggersAlarm"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#alarm1"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#triggersAlarm"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#alarm2"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasPriority"/>
+                <Variable IRI="#alarm1"/>
+                <Variable IRI="#prior1"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasPriority"/>
+                <Variable IRI="#alarm2"/>
+                <Variable IRI="#prior2"/>
+            </DataPropertyAtom>
+            <ClassAtom>
+                <Class IRI="#NotCombinedAlarm"/>
+                <Variable IRI="#alarm1"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class IRI="#NotCombinedAlarm"/>
+                <Variable IRI="#alarm2"/>
+            </ClassAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="#prior1"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThan">
+                <Variable IRI="#prior2"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">0</Literal>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#triggersAlarm"/>
+                <Variable IRI="#x"/>
+                <NamedIndividual IRI="#CombinedAlarm1"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">S1</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Observation"/>
+                <Variable IRI="#x"/>
+            </ClassAtom>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Result"/>
+                <Variable IRI="#y"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="sosa:hasResult"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#y"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasNumericValue"/>
+                <Variable IRI="#y"/>
+                <Variable IRI="#z"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty abbreviatedIRI="sosa:observedProperty"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#a"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasAlarmRange"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#b"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasUpperLimit"/>
+                <Variable IRI="#b"/>
+                <Variable IRI="#c"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasLowerLimit"/>
+                <Variable IRI="#b"/>
+                <Variable IRI="#d"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#triggersAlarm"/>
+                <Variable IRI="#b"/>
+                <Variable IRI="#e"/>
+            </ObjectPropertyAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#lessThan">
+                <Variable IRI="#z"/>
+                <Variable IRI="#c"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual">
+                <Variable IRI="#z"/>
+                <Variable IRI="#d"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#triggersAlarm"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#e"/>
+            </ObjectPropertyAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">S4</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class abbreviatedIRI="sosa:Observation"/>
+                <Variable IRI="#x"/>
+            </ClassAtom>
+            <BuiltInAtom abbreviatedIRI="geo:hasInfluenceNow">
+                <Variable IRI="#bool"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#z"/>
+            </BuiltInAtom>
+            <BuiltInAtom IRI="http://www.w3.org/2003/11/swrlb#equal">
+                <Variable IRI="#bool"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+            </BuiltInAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasTemporalInfluenceInHours"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#z"/>
+            </DataPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty abbreviatedIRI="sosa:resultTime"/>
+                <Variable IRI="#x"/>
+                <Variable IRI="#t"/>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasActualInfluence"/>
+                <Variable IRI="#x"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+            </DataPropertyAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

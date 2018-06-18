@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE rdf:RDF [
+         <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns'>
+         <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema'>
+	 <!ENTITY owl 'http://www.w3.org/2002/07/owl'>
+         <!ENTITY swrl 'http://www.w3.org/2003/11/swrl'>
+         <!ENTITY geo 'http://www.w3.org/2003/11/geo'>
+	 <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema'>
+]>
+
+<rdf:RDF
+  xmlns:rdf ="&rdf;#"
+  xmlns:rdfs="&rdfs;#"
+  xmlns:owl ="&owl;#"
+  xmlns:swrl="&swrl;#"
+  xmlns="&geo;#"
+  xml:base  ="&swrlb;"
+>
+
+<rdf:Description rdf:about="&swrl;#Builtin">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#args"/>
+      <owl:allValuesFrom rdf:resource="&xsd;#int"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#args"/>
+      <owl:maxCardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#minArgs"/>
+      <owl:allValuesFrom rdf:resource="&xsd;#int"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#minArgs"/>
+      <owl:maxCardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#maxArgs"/>
+      <owl:allValuesFrom rdf:resource="&xsd;#int"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#maxArgs"/>
+      <owl:maxCardinality rdf:datatype="&xsd;#nonNegativeInteger">1</owl:maxCardinality>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</rdf:Description>
+
+<owl:DatatypeProperty rdf:ID="args"/>
+<owl:DatatypeProperty rdf:ID="maxArgs"/>
+<owl:DatatypeProperty rdf:ID="minArgs"/>
+
+<swrl:Builtin rdf:ID="haversine">
+  <args rdf:datatype="&xsd;#int">3</args>
+</swrl:Builtin>
+<swrl:Builtin rdf:ID="hasInfluenceNow">
+  <args rdf:datatype="&xsd;#int">3</args>
+</swrl:Builtin>
+</rdf:RDF>
